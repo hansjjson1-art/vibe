@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Coding</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #f1f5f9;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #cbd5f5;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    section {
+      padding: 120px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #38bdf8, #a78bfa);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      color: white;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(56,189,248,0.3);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 16px;
+      transition: 0.4s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #334155;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #64748b;
+    }
+
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 32px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Vibe Coding</h1>
+  <nav>
+    <a href="#about">소개</a>
+    <a href="#features">특징</a>
+    <a href="#contact">시작하기</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>코딩은 이제 감각이다</h2>
+  <p>Vibe Coding으로 더 빠르고 직관적인 개발을 경험하세요</p>
+  <a href="#about" class="btn">지금 시작하기</a>
+</section>
+
+<section id="about">
+  <h2>Vibe Coding이란?</h2>
+  <p>
+    Vibe Coding은 직관적인 흐름과 감각적인 경험을 기반으로 한 새로운 개발 방식입니다.
+    복잡한 설정 없이, 아이디어에 집중하세요.
+  </p>
+</section>
+
+<section id="features">
+  <h2>주요 특징</h2>
+  <div class="features">
+    <div class="card">
+      <h3>⚡ 빠른 개발</h3>
+      <p>아이디어를 즉시 코드로 변환</p>
+    </div>
+    <div class="card">
+      <h3>🎨 감각적인 UI</h3>
+      <p>현대적이고 세련된 디자인</p>
+    </div>
+    <div class="card">
+      <h3>🚀 생산성 향상</h3>
+      <p>불필요한 작업 제거</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>지금 시작하세요</h2>
+  <p>당신의 코딩 경험을 완전히 바꿔보세요.</p>
+  <a href="#" class="btn">무료 체험</a>
+</section>
+
+<footer>
+  © 2026 Vibe Coding. All rights reserved.
+</footer>
+
+<script>
+  // 부드러운 스크롤
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // 스크롤 애니메이션
+  const cards = document.querySelectorAll('.card');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  cards.forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
