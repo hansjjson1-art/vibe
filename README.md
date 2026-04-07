@@ -1,6 +1,6 @@
 # vibe
 
-'''mermaid
+```mermaid
 gantt
     title AI 챔피언 대회 WBS
     dateFormat  YYYY-MM-DD
@@ -40,4 +40,4 @@ gantt
     결과 발표                   :g1, after f3, 2d
     데이터/코드 공개            :g2, after g1, 3d
     회고 및 개선안 도출         :g3, after g2, 3d
-    ```
+```
