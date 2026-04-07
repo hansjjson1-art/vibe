@@ -1,6 +1,6 @@
 # vibe
 
-'''mermail
+'''mermaid
 gantt
     title AI 챔피언 대회 WBS
     dateFormat  YYYY-MM-DD
